@@ -5,7 +5,8 @@ import App from './components/App';
 
 import './sass/index';
 
-const rootElement = document.getElementById('app');
 const rootApp = <App />;
+
+const rootElement = document.getElementById('app');
 
 ReactDOM.render(rootApp, rootElement);

@@ -1,0 +1,66 @@
+@import './_mixins';
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	list-style: none;
+	list-style-type: none;
+	text-decoration: none;
+	box-sizing: inherit;
+}
+
+:root {
+	// Dark Mode background
+	--primary-color-dark: #202c37;
+	// Dark Mode elements
+	--secondary-color-dark: #2b3945;
+	// Dark Mode text
+	--text-color-dark: #ffffff;
+
+	// Light Mode background
+	--primary-color-light: #fafafa;
+	// Light Mode elements
+	--secondary-color-light: #ffffff;
+	// Light Mode Input
+	--input-color-light: #858585;
+	// Light Mode text
+	--text-color-light: #111517;
+
+	--white: #ffffff;
+	--dark-grey: #858585;
+
+  // Font Sizes
+  --home-page-font-size: 1.4rem;
+  --detail-page-font-size: 1.6rem;
+  --font-weight-normal: 300;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 800;
+}
+
+html {
+	font-size: 62.5%;
+	@include respond(big-screen) {
+		font-size: 75%;
+	}
+	@include respond(tab-land) {
+		font-size: 56.25%;
+	}
+	@include respond(tab-port) {
+		font-size: 50%;
+	}
+	@include respond(phone) {
+		// font-size: 31.25%; // 5px root font-size
+		font-size: 43.75%; // 7px root font-size
+	}
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--home-page-font-size);
+	box-sizing: border-box;
+}

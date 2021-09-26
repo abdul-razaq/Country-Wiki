@@ -1,0 +1,13 @@
+.light {
+	min-width: 100vw;
+	min-height: 100vh;
+	background-color: var(--primary-color-light);
+	color: var(--text-color-light);
+}
+
+.dark {
+	min-width: 100vw;
+	min-height: 100vh;
+	background-color: var(--primary-color-dark);
+	color: var(--text-color-dark);
+}

@@ -1,10 +1,16 @@
+@import '../../sass/mixins';
+
 .appbar {
-	box-shadow: var(--vertical-box-shadow-light);
 	max-width: 100%;
 	padding: 2.5rem 7.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	box-shadow: var(--vertical-box-shadow-light);
+
+	@include respond(phone) {
+		padding: 4rem 2rem;
+	}
 
 	&--light {
 		background-color: var(--secondary-color-light);
@@ -27,10 +33,24 @@
 		cursor: pointer;
 		color: currentColor;
 
+		@include respond(tab-port) {
+			align-items: flex-end;
+		}
+
+		& > svg {
+			@include respond(phone) {
+				font-size: 1em;
+			}
+		}
+
 		& > span {
 			margin-left: 0.7rem;
 			font-size: 1.6rem;
 			font-weight: var(--font-weight-semi-bold);
+
+			@include respond(phone) {
+				font-size: 1.9rem;
+			}
 		}
 	}
 }

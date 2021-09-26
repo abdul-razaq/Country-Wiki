@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from '../../contexts/theme';
 
+import AppBar from '../AppBar';
+
 import classes from './app.module';
 
 export default function App({}) {
@@ -18,7 +20,7 @@ export default function App({}) {
 			}}
 		>
 			<main className={classes[theme]}>
-				<h1>Welcome to country wiki</h1>
+				<AppBar />
 			</main>
 		</ThemeProvider>
 	);

@@ -33,12 +33,16 @@
 	--white: #ffffff;
 	--dark-grey: #858585;
 
-  // Font Sizes
-  --home-page-font-size: 1.4rem;
-  --detail-page-font-size: 1.6rem;
-  --font-weight-normal: 300;
-  --font-weight-semi-bold: 600;
-  --font-weight-bold: 800;
+	// Font Sizes
+	--home-page-font-size: 1.4rem;
+	--detail-page-font-size: 1.6rem;
+	--font-weight-normal: 300;
+	--font-weight-semi-bold: 600;
+	--font-weight-bold: 800;
+
+	--vertical-box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.15);
+	--horizontal-box-shadow-light: 2px 0 5px rgba(0, 0, 0, 0.15);
+	--box-shadow-light: 2px 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 html {
@@ -59,8 +63,8 @@ html {
 }
 
 body {
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: var(--font-weight-normal);
-  font-size: var(--home-page-font-size);
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: var(--font-weight-normal);
+	font-size: var(--home-page-font-size);
 	box-sizing: border-box;
 }

@@ -1,0 +1,36 @@
+.appbar {
+	box-shadow: var(--vertical-box-shadow-light);
+	max-width: 100%;
+	padding: 2.5rem 7.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&--light {
+		background-color: var(--secondary-color-light);
+		color: var(--text-color-light);
+	}
+
+	&--dark {
+		background-color: var(--secondary-color-dark);
+		color: var(--text-color-dark);
+	}
+
+	& h1 {
+		font-size: 2.3rem;
+	}
+
+	&__button {
+		display: flex;
+		align-items: stretch;
+		background: none;
+		cursor: pointer;
+		color: currentColor;
+
+		& > span {
+			margin-left: 0.7rem;
+			font-size: 1.6rem;
+			font-weight: var(--font-weight-semi-bold);
+		}
+	}
+}

@@ -41,6 +41,10 @@
 			@include respond(phone) {
 				font-size: 1em;
 			}
+
+      @include respond(big-screen) {
+				font-size: 1.4em;
+			}
 		}
 
 		& > span {

@@ -30,10 +30,11 @@
 	// Light Mode text
 	--text-color-light: #111517;
 
-	--white: #ffffff;
+	--color-white: #ffffff;
 	--dark-grey: #858585;
 
 	// Font Sizes
+	--root-font-family: 'Nunito Sans', sans-serif;
 	--home-page-font-size: 1.4rem;
 	--detail-page-font-size: 1.6rem;
 	--font-weight-normal: 300;
@@ -43,6 +44,8 @@
 	--vertical-box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.15);
 	--horizontal-box-shadow-light: 2px 0 5px rgba(0, 0, 0, 0.15);
 	--box-shadow-light: 2px 2px 5px rgba(0, 0, 0, 0.15);
+
+	--spacing-around: 2.5rem 7.5rem;
 }
 
 html {
@@ -63,7 +66,7 @@ html {
 }
 
 body {
-	font-family: 'Nunito Sans', sans-serif;
+	font-family: var(--root-font-family);
 	font-weight: var(--font-weight-normal);
 	font-size: var(--home-page-font-size);
 	box-sizing: border-box;

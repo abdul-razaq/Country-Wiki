@@ -3,6 +3,8 @@ import { ThemeProvider } from '../../contexts/theme';
 
 import AppBar from '../AppBar';
 
+import AllCountries from '../../screens/AllCountries';
+
 import classes from './app.module';
 
 export default function App({}) {
@@ -21,6 +23,7 @@ export default function App({}) {
 		>
 			<main className={classes[theme]}>
 				<AppBar />
+				<AllCountries />
 			</main>
 		</ThemeProvider>
 	);

@@ -1,0 +1,12 @@
+.countries {
+	padding: var(--spacing-around);
+  padding-top: 5rem;
+
+  .inputs {
+    max-width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

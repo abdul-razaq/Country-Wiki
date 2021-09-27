@@ -2,7 +2,7 @@
 
 .appbar {
 	max-width: 100%;
-	padding: 2.5rem 7.5rem;
+	padding: var(--spacing-around);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

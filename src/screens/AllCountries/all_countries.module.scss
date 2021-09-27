@@ -1,12 +1,20 @@
+@import '../../sass/mixins';
+
 .countries {
 	padding: var(--spacing-around);
-  padding-top: 5rem;
+	padding-top: 5rem;
 
-  .inputs {
-    max-width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
+	.inputs {
+		max-width: 100%;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: center;
+
+		@include respond(phone) {
+			height: 12rem;
+			justify-content: center;
+			align-content: space-between;
+		}
+	}
 }

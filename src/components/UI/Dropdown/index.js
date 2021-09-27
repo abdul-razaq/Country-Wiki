@@ -6,6 +6,7 @@ import ThemeContext from '../../../contexts/theme';
 import classes from './dropdown.module';
 
 export default function DropDown({ label, options }) {
+	const [title, setTitle] = useState(label);
 	const [showDropdown, setShowDropdown] = useState(false);
 
 	const { theme } = useContext(ThemeContext);
@@ -16,13 +17,14 @@ export default function DropDown({ label, options }) {
 
 	function onSelectRegion(region) {
 		console.log(region);
+		setTitle(region);
 		setShowDropdown(false);
 	}
 
 	return (
 		<div className={`${classes.dropdown} ${classes.dropdown}--${theme}`}>
 			<div className={`${classes.select}`} onClick={toggleDropdown}>
-				<span>{label}</span>
+				<span>{title}</span>
 				<span>{showDropdown ? '\u25B2' : '\u25BC'}</span>
 			</div>
 			{showDropdown && (

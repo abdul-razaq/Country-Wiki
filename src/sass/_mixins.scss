@@ -5,6 +5,17 @@
 	transform: translateX(-50%) translateY(-50%);
 }
 
+@mixin theme($mode) {
+	@if $mode == light {
+		color: var(--text-color-light);
+		background-color: var(--secondary-color-light);
+	}
+	@if $mode == dark {
+		color: var(--text-color-dark);
+		background-color: var(--secondary-color-dark);
+	}
+}
+
 // MEDIA QUERY MANAGER
 
 @mixin respond($breakpoint) {

@@ -1,15 +1,21 @@
+@import '../../../sass/mixins';
+
 .card {
 	border-radius: 6px;
 	box-shadow: 2.5px 2.5px 6px rgba(0, 0, 0, 0.2);
 	overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    transform: translateY(-4rem);
+  }
 
 	&--light {
-		color: var(--text-color-light);
-		background-color: var(--secondary-color-light);
+		@include theme(light);
 	}
 
 	&--dark {
-		color: var(--text-color-dark);
-		background-color: var(--secondary-color-dark);
+		@include theme(dark);
 	}
 }

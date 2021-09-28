@@ -1,3 +1,5 @@
+@import '../../../sass/mixins';
+
 .button {
 	font-family: inherit;
 	padding: 2rem 4rem;
@@ -7,12 +9,10 @@
 	text-transform: uppercase;
 
 	&--light {
-		color: var(--text-color-light);
-		background-color: var(--secondary-color-light);
+		@include theme(light);
 	}
 
 	&--dark {
-		color: var(--text-color-dark);
-		background-color: var(--secondary-color-dark);
+		@include theme(dark);
 	}
 }

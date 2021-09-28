@@ -4,10 +4,11 @@ import BeatLoader from 'react-spinners/BeatLoader';
 import SearchInput from '../../components/UI/SearchInput';
 import DropDown from '../../components/UI/DropDown';
 import Button from '../../components/UI/Button';
+import Country from '../../components/Country';
 
 import ThemeContext from '../../contexts/theme';
 
-import Country from '../../utils/api';
+import CountryAPI from '../../utils/api';
 
 import classes from './all_countries.module';
 
@@ -25,10 +26,11 @@ export default function AllCountries({}) {
 
 		let countries;
 		countries = JSON.parse(window.localStorage.getItem('countries'));
+
 		if (!countries) {
 			(async () => {
 				try {
-					const data = await new Country().fetchAllCountries();
+					const data = await new CountryAPI().fetchAllCountries();
 					window.localStorage.setItem('countries', JSON.stringify(data));
 					setCountries(data);
 				} catch (error) {
@@ -45,12 +47,29 @@ export default function AllCountries({}) {
 		}
 	}, [refresh]);
 
-	let content = <p>{JSON.stringify(countries, null, 2)}</p>;
+	let content = (
+		<div className={classes.countries__list}>
+			{countries.map(country => (
+				<Country
+					key={country.name}
+					name={country.name}
+					population={country.population.toString()}
+					region={country.region}
+					capital={country.capital}
+					flag={country.flags.svg}
+				/>
+			))}
+		</div>
+	);
 
 	if (loading) {
 		content = (
 			<div className={classes.loading}>
-				<BeatLoader loading={true} color={ theme === 'light' ? "#858585" : "#ffffff"} size={30} />
+				<BeatLoader
+					loading={true}
+					color={theme === 'light' ? '#858585' : '#ffffff'}
+					size={30}
+				/>
 			</div>
 		);
 	}

@@ -1,0 +1,18 @@
+.button {
+	font-family: inherit;
+	padding: 2rem 4rem;
+	cursor: pointer;
+	border-radius: 5px;
+	font-weight: var(--font-weight-semi-bold);
+	text-transform: uppercase;
+
+	&--light {
+		color: var(--text-color-light);
+		background-color: var(--secondary-color-light);
+	}
+
+	&--dark {
+		color: var(--text-color-dark);
+		background-color: var(--secondary-color-dark);
+	}
+}

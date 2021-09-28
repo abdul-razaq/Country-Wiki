@@ -17,4 +17,25 @@
 			align-content: space-between;
 		}
 	}
+
+	.loading {
+		@include center;
+	}
+
+	.error {
+		height: 12rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		@include center;
+
+		@include respond(phone) {
+			text-align: center;
+		}
+
+		& > p {
+			font-size: 1.9rem;
+			margin-bottom: 2rem;
+		}
+	}
 }

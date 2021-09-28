@@ -1,3 +1,12 @@
+@mixin center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+// MEDIA QUERY MANAGER
+
 @mixin respond($breakpoint) {
 	@if $breakpoint == big-screen {
 		@media only screen and (min-width: 112.5em) {

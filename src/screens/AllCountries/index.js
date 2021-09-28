@@ -1,11 +1,69 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import BeatLoader from 'react-spinners/BeatLoader';
 
 import SearchInput from '../../components/UI/SearchInput';
 import DropDown from '../../components/UI/DropDown';
+import Button from '../../components/UI/Button';
+
+import ThemeContext from '../../contexts/theme';
+
+import Country from '../../utils/api';
 
 import classes from './all_countries.module';
 
 export default function AllCountries({}) {
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState('');
+	const [countries, setCountries] = useState([]);
+	const [refresh, setRefresh] = useState(false);
+
+	const { theme } = useContext(ThemeContext);
+
+	useEffect(() => {
+		setError('');
+		setLoading(true);
+
+		let countries;
+		countries = JSON.parse(window.localStorage.getItem('countries'));
+		if (!countries) {
+			(async () => {
+				try {
+					const data = await new Country().fetchAllCountries();
+					window.localStorage.setItem('countries', JSON.stringify(data));
+					setCountries(data);
+				} catch (error) {
+					setError(
+						'Error fetching countries. check internet connection and try again!',
+					);
+				} finally {
+					setLoading(false);
+				}
+			})();
+		} else {
+			setCountries(countries);
+			setLoading(false);
+		}
+	}, [refresh]);
+
+	let content = <p>{JSON.stringify(countries, null, 2)}</p>;
+
+	if (loading) {
+		content = (
+			<div className={classes.loading}>
+				<BeatLoader loading={true} color={ theme === 'light' ? "#858585" : "#ffffff"} size={30} />
+			</div>
+		);
+	}
+
+	if (error) {
+		content = (
+			<div className={`${classes.error}`}>
+				<p>{error}</p>
+				<Button onClick={() => setRefresh(v => !v)}>Try Again!</Button>
+			</div>
+		);
+	}
+
 	return (
 		<div className={`${classes.countries}`}>
 			<div className={`${classes.inputs}`}>
@@ -15,6 +73,7 @@ export default function AllCountries({}) {
 					options={['Africa', 'America', 'Asia', 'Europe', 'Oceania']}
 				/>
 			</div>
+			<div>{content}</div>
 		</div>
 	);
 }

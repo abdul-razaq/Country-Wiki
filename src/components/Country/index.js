@@ -1,21 +1,17 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import ThemeContext from '../../contexts/theme';
+import Card from '../UI/Card';
 
 import classes from './country.module';
 
 export default function Country({ name, population, region, capital, flag }) {
-	const { theme } = useContext(ThemeContext);
-
 	return (
-		<div
-			className={`${classes.country} ${classes.country}--${theme}`}
-		>
-			<div className={classes.flag}>
+		<Card>
+			<div className={classes.flagContainer}>
 				<img src={flag} alt={`Flag for ${name}`} />
 			</div>
-			<div>
+			<div className={classes.details}>
 				<h2>{name}</h2>
 				<ul>
 					<li>
@@ -32,7 +28,7 @@ export default function Country({ name, population, region, capital, flag }) {
 					</li>
 				</ul>
 			</div>
-		</div>
+		</Card>
 	);
 }
 

@@ -5,7 +5,7 @@ import ThemeContext from '../../../contexts/theme';
 
 import classes from './dropdown.module';
 
-export default function DropDown({ label, options, onSubmitRegion }) {
+export default function DropDown({ label, options, onSubmitRegion, refToOptions }) {
 	const [title, setTitle] = useState(label);
 	const [showDropdown, setShowDropdown] = useState(false);
 
@@ -28,7 +28,7 @@ export default function DropDown({ label, options, onSubmitRegion }) {
 				<span>{showDropdown ? '\u25B2' : '\u25BC'}</span>
 			</div>
 			{showDropdown && (
-				<ul className={`${classes.options} ${classes.options}--${theme}`}>
+				<ul ref={refToOptions} className={`${classes.options} ${classes.options}--${theme}`}>
 					{options.map(option => (
 						<li key={option} onClick={onSelectRegion.bind(null, option)}>
 							{option}

@@ -62,7 +62,12 @@ export default function AllCountries({}) {
 		const searchValue = value.toLowerCase();
 		const countries = JSON.parse(window.localStorage.getItem('countries'));
 		setCountries(
-			countries.filter(country => country.name.toLowerCase() === searchValue)
+			countries.filter(country => {
+				return (
+					country.name.toLowerCase().includes(searchValue) ||
+					country.capital.toLowerCase().includes(searchValue)
+				);
+			}),
 		);
 		setLoading(false);
 	}

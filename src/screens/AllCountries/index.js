@@ -57,6 +57,16 @@ export default function AllCountries({}) {
 		setLoading(false);
 	}
 
+	function handleSearch(value) {
+		setLoading(true);
+		const searchValue = value.toLowerCase();
+		const countries = JSON.parse(window.localStorage.getItem('countries'));
+		setCountries(
+			countries.filter(country => country.name.toLowerCase() === searchValue)
+		);
+		setLoading(false);
+	}
+
 	let content = (
 		<div className={classes.countries__list}>
 			{countries.map(country => (
@@ -96,7 +106,10 @@ export default function AllCountries({}) {
 	return (
 		<div className={`${classes.countries}`}>
 			<div className={`${classes.inputs}`}>
-				<SearchInput placeholder="Search for a country..." />
+				<SearchInput
+					placeholder="Search for a country..."
+					onSearch={handleSearch}
+				/>
 				<DropDown
 					label="Filter by Region"
 					options={['Africa', 'America', 'Asia', 'Europe', 'Oceania']}

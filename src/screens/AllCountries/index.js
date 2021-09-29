@@ -47,13 +47,23 @@ export default function AllCountries({}) {
 		}
 	}, [refresh]);
 
+	function handleRegionSubmit(region) {
+		setLoading(true);
+		const regionToSearch = region === 'America' ? 'Americas' : region;
+		const countries = JSON.parse(window.localStorage.getItem('countries'));
+		setCountries(
+			countries.filter(country => country.region === regionToSearch),
+		);
+		setLoading(false);
+	}
+
 	let content = (
 		<div className={classes.countries__list}>
 			{countries.map(country => (
 				<Country
 					key={country.name}
 					name={country.name}
-					population={country.population.toString()}
+					population={Number(country.population).toLocaleString()}
 					region={country.region}
 					capital={country.capital}
 					flag={country.flags.svg}
@@ -90,6 +100,7 @@ export default function AllCountries({}) {
 				<DropDown
 					label="Filter by Region"
 					options={['Africa', 'America', 'Asia', 'Europe', 'Oceania']}
+					onSubmitRegion={handleRegionSubmit}
 				/>
 			</div>
 			<div>{content}</div>

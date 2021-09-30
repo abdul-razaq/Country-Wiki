@@ -1,13 +1,17 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
+import ScreenContext from '../../contexts/screen';
+
 import Card from '../UI/Card';
 
 import classes from './country.module';
 
 export default function Country({ name, population, region, capital, flag }) {
+	const { switchScreen } = useContext(ScreenContext);
+
 	return (
-		<Card>
+		<Card onClick={switchScreen.bind(null, name)}>
 			<div className={classes.flagContainer}>
 				<img src={flag} alt={`Flag for ${name}`} />
 			</div>

@@ -1,30 +1,57 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from '../../contexts/theme';
+import { ScreenProvider } from '../../contexts/screen';
 
 import AppBar from '../AppBar';
 
 import AllCountries from '../../screens/AllCountries';
+import CountryDetails from '../../screens/CountryDetails';
 
 import classes from './app.module';
 
 export default function App({}) {
 	const [theme, setTheme] = useState('light');
+	const [screen, setScreen] = useState('countries');
+	const [country, setCountry] = useState(null);
 
 	function toggleTheme() {
 		setTheme(theme => (theme === 'light' ? 'dark' : 'light'));
 	}
 
+	function switchScreen(countryName) {
+		if (countryName) {
+			const countryDetails = JSON.parse(
+				window.localStorage.getItem('countries'),
+			);
+			setCountry(countryDetails.find(country => country.name === countryName));
+			setScreen('countryDetails');
+		} else {
+			setScreen('countries');
+		}
+	}
+
 	return (
-		<ThemeProvider
+		<ScreenProvider
 			value={{
-				theme,
-				toggleTheme,
+				screen,
+				switchScreen,
 			}}
 		>
-			<main className={classes[theme]}>
-				<AppBar />
-				<AllCountries />
-			</main>
-		</ThemeProvider>
+			<ThemeProvider
+				value={{
+					theme,
+					toggleTheme,
+				}}
+			>
+				<main className={classes[theme]}>
+					<AppBar />
+					{screen === 'countries' ? (
+						<AllCountries />
+					) : (
+						<CountryDetails country={country} />
+					)}
+				</main>
+			</ThemeProvider>
+		</ScreenProvider>
 	);
 }

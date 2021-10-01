@@ -5,7 +5,12 @@ import ThemeContext from '../../../contexts/theme';
 
 import classes from './dropdown.module';
 
-export default function DropDown({ label, options, onSubmitRegion, refToOptions }) {
+export default function DropDown({
+	label,
+	options,
+	onSubmitRegion,
+	refToOptions,
+}) {
 	const [title, setTitle] = useState(label);
 	const [showDropdown, setShowDropdown] = useState(false);
 
@@ -28,7 +33,11 @@ export default function DropDown({ label, options, onSubmitRegion, refToOptions 
 				<span>{showDropdown ? '\u25B2' : '\u25BC'}</span>
 			</div>
 			{showDropdown && (
-				<ul ref={refToOptions} className={`${classes.options} ${classes.options}--${theme}`}>
+				<ul
+					ref={refToOptions}
+					style={styles.options(theme)}
+					className={`${classes.options}`}
+				>
 					{options.map(option => (
 						<li key={option} onClick={onSelectRegion.bind(null, option)}>
 							{option}
@@ -40,6 +49,16 @@ export default function DropDown({ label, options, onSubmitRegion, refToOptions 
 	);
 }
 
+const styles = {
+	options: theme => ({
+		backgroundColor:
+			theme === 'light'
+				? 'var(--secondary-color-light)'
+				: 'var(--secondary-color-dark)',
+		color:
+			theme === 'light' ? 'var(--text-color-light)' : 'var(--text-color-dark)',
+	}),
+};
 DropDown.propTypes = {
 	label: PropTypes.string.isRequired,
 	options: PropTypes.arrayOf(PropTypes.string).isRequired,

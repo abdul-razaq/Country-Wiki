@@ -1,16 +1,6 @@
-@import '../../../sass/mixins';
-
 .chip {
   padding: 1rem 2rem;
   border-radius: 5px;
   box-shadow: var(--box-shadow-light);
   cursor: pointer;
-
-  &--light {
-    @include theme(light);
-  }
-
-  &--dark {
-    @include theme(dark);
-  }
 }

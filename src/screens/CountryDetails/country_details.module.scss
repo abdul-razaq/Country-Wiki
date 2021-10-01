@@ -3,6 +3,10 @@
 .countryDetails {
 	padding: 7rem 8rem;
 
+	@include respond(phone) {
+		padding: 6rem 4rem;
+	}
+
 	&--light {
 		@include theme(light);
 	}
@@ -27,77 +31,129 @@
 	}
 
 	.details {
-    margin-top: 8rem;
+		margin-top: 8rem;
 		display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+		flex-flow: row wrap;
+		justify-content: space-between;
+
+		@include respond(phone) {
+			margin-top: 10rem;
+			flex-flow: column nowrap;
+		}
 	}
 
 	.flag {
-    flex-basis: 40%;
-    height: 37rem;
+		flex-basis: 40%;
+		height: 37rem;
+    margin-bottom: 3rem;
+
+		@include respond(phone) {
+			flex-basis: 100%;
+		}
 
 		& > img {
 			height: 100%;
 			width: 100%;
+			display: block;
 		}
 	}
 
 	.description {
-    margin-top: 3rem;
-    flex-basis: 50%;
+		margin-top: 3rem;
+		flex-basis: 50%;
+
+		@include respond(phone) {
+			flex-basis: 100%;
+		}
 
 		& > h2 {
-      font-size: 3.1rem;
-      font-weight: var(--font-weight-semi-bold);
+			font-size: 3.1rem;
+			font-weight: var(--font-weight-semi-bold);
 		}
 
 		& > ul {
-      max-height: 15rem;
-      max-width: 55rem;
-      margin-top: 2.5rem;
-      display: flex;
-      flex-flow: column wrap;
-      justify-items: center;
-      align-content: space-between;
+			max-height: 15rem;
+			max-width: 55rem;
+			margin-top: 2.5rem;
+			display: flex;
+			flex-flow: column wrap;
+			justify-items: center;
+			align-content: space-between;
+
+			@include respond(phone) {
+        line-height: 2;
+				max-height: 100%;
+				flex-flow: column wrap;
+				justify-content: space-between;
+			}
 
 			li {
-				& span:first-child {
-					font-weight: var(--font-weight-semi-bold);
-          font-size: 1.5rem;
-					color: inherit;
+				@include respond(phone) {
+					&:nth-child(6) {
+						margin-top: 5rem;
+					}
 				}
 
-        & span:last-child {
-          text-overflow: ellipsis;
-          font-size: 1.35rem;
-        }
+				& span:first-child {
+					font-weight: var(--font-weight-semi-bold);
+					font-size: 1.5rem;
+					color: inherit;
 
-        &:not(:last-child) {
-          margin-bottom: 1rem;
-        }
+					@include respond(phone) {
+						font-size: 2rem;
+					}
+				}
+
+				& span:last-child {
+					text-overflow: ellipsis;
+					font-size: 1.35rem;
+
+					@include respond(phone) {
+						font-size: 1.8rem;
+					}
+				}
+
+				&:not(:last-child) {
+					margin-bottom: 1rem;
+				}
 			}
 		}
 
 		& > div:last-of-type {
-      margin-top: 6rem;
-      display: flex;
-      align-items: center;
+			margin-top: 6rem;
+			display: flex;
+			align-items: center;
+
+			@include respond(phone) {
+				height: 100%;
+				flex-flow: column wrap;
+				align-items: flex-start;
+			}
 
 			& > span {
-        font-weight: var(--font-weight-bold);
-        font-size: 1.5rem;
-        margin-right: 3rem;
+				font-weight: var(--font-weight-bold);
+				font-size: 1.5rem;
+				margin-right: 3rem;
+
+				@include respond(phone) {
+					font-size: 2.1rem;
+					font-weight: var(--font-weight-semi-bold);
+				}
 			}
 
 			& > ul {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
+				display: flex;
+				flex-flow: row wrap;
+				align-items: center;
 
-        & > *:not(:last-child) {
-          margin-right: 1rem;
-        }
+				@include respond(phone) {
+					margin-top: 2rem;
+					font-size: 1.5rem;
+				}
+
+				& > *:not(:last-child) {
+					margin-right: 1rem;
+				}
 			}
 		}
 	}

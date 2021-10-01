@@ -28,7 +28,9 @@ export default function Country({ name, population, region, capital, flag }) {
 					</li>
 					<li>
 						<span>Capital: </span>
-						<span>{capital}</span>
+						<span>
+							{capital instanceof Array ? capital.join(', ') : capital}
+						</span>
 					</li>
 				</ul>
 			</div>
@@ -40,6 +42,6 @@ Country.propTypes = {
 	name: PropTypes.string.isRequired,
 	population: PropTypes.string.isRequired,
 	region: PropTypes.string.isRequired,
-	capital: PropTypes.string.isRequired,
+	capital: PropTypes.arrayOf(PropTypes.string).isRequired,
 	flag: PropTypes.string.isRequired,
 };

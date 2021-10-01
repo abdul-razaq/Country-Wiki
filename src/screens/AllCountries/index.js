@@ -62,10 +62,10 @@ export default function AllCountries({}) {
 		const searchValue = value.toLowerCase();
 		const countries = JSON.parse(window.localStorage.getItem('countries'));
 		setCountries(
-			countries.filter(country => {
+			countries.filter(({ name: { common }, capital }) => {
 				return (
-					country.name.toLowerCase().includes(searchValue) ||
-					country.capital.toLowerCase().includes(searchValue)
+					common.toLowerCase().includes(searchValue) ||
+					capital.toString().toLowerCase().includes(searchValue)
 				);
 			}),
 		);
@@ -74,16 +74,18 @@ export default function AllCountries({}) {
 
 	let content = (
 		<div className={classes.countries__list}>
-			{countries.map(country => (
-				<Country
-					key={country.name}
-					name={country.name}
-					population={Number(country.population).toLocaleString()}
-					region={country.region}
-					capital={country.capital}
-					flag={country.flags.svg}
-				/>
-			))}
+			{countries.map(
+				({ name: { common }, population, region, capital, flags }) => (
+					<Country
+						key={common}
+						name={common}
+						population={Number(population).toLocaleString()}
+						region={region}
+						capital={capital}
+						flag={flags.svg}
+					/>
+				),
+			)}
 		</div>
 	);
 

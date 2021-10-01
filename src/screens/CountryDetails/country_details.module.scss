@@ -1,0 +1,104 @@
+@import '../../sass/mixins';
+
+.countryDetails {
+	padding: 7rem 8rem;
+
+	&--light {
+		@include theme(light);
+	}
+
+	&--dark {
+		@include theme(dark);
+	}
+
+	& > button {
+		border-radius: 5px;
+		cursor: pointer;
+		padding: 1rem 4rem;
+		background-color: inherit;
+		color: inherit;
+		font-weight: var(--font-weight-semi-bold);
+		box-shadow: var(--box-shadow-light);
+
+		& span:first-child {
+			font-size: 1.8rem;
+			margin-right: 0.5rem;
+		}
+	}
+
+	.details {
+    margin-top: 8rem;
+		display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+	}
+
+	.flag {
+    flex-basis: 40%;
+    height: 37rem;
+
+		& > img {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	.description {
+    margin-top: 3rem;
+    flex-basis: 50%;
+
+		& > h2 {
+      font-size: 3.1rem;
+      font-weight: var(--font-weight-semi-bold);
+		}
+
+		& > ul {
+      max-height: 15rem;
+      max-width: 55rem;
+      margin-top: 2.5rem;
+      display: flex;
+      flex-flow: column wrap;
+      justify-items: center;
+      align-content: space-between;
+
+			li {
+				& span:first-child {
+					font-weight: var(--font-weight-semi-bold);
+          font-size: 1.5rem;
+					color: inherit;
+				}
+
+        & span:last-child {
+          text-overflow: ellipsis;
+          font-size: 1.35rem;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+			}
+		}
+
+		& > div:last-of-type {
+      margin-top: 6rem;
+      display: flex;
+      align-items: center;
+
+			& > span {
+        font-weight: var(--font-weight-bold);
+        font-size: 1.5rem;
+        margin-right: 3rem;
+			}
+
+			& > ul {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+
+        & > *:not(:last-child) {
+          margin-right: 1rem;
+        }
+			}
+		}
+	}
+}

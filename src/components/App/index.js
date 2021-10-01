@@ -20,10 +20,10 @@ export default function App({}) {
 
 	function switchScreen(countryName) {
 		if (countryName) {
-			const countryDetails = JSON.parse(
-				window.localStorage.getItem('countries'),
+			const countries = JSON.parse(window.localStorage.getItem('countries'));
+			setCountry(
+				countries.find(({ name: { common } }) => common === countryName),
 			);
-			setCountry(countryDetails.find(country => country.name === countryName));
 			setScreen('countryDetails');
 		} else {
 			setScreen('countries');

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import BeatLoader from 'react-spinners/BeatLoader';
 
 import SearchInput from '../../components/UI/SearchInput';
-import DropDown from '../../components/UI/DropDown';
+import DropDown from '../../components/UI/Dropdown';
 import Button from '../../components/UI/Button';
 import Country from '../../components/Country';
 
